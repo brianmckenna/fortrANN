@@ -74,7 +74,7 @@
     ! Arguments
     ! ---------
      TYPE( Network ), INTENT( INOUT ) :: n
-     type( Epoch ),   POINTER         :: d
+     TYPE( Epoch ),   POINTER         :: d
 
     ! ---------------
     ! Function Result

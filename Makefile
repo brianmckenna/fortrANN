@@ -5,42 +5,32 @@ MODULES = $(SMODULES) $(FMODULES)
 MODOBJS = $(SMODOBJS) $(FMODOBJS) 
 
 # Network modules
-ANNMODULES   = m_network.mod
-ANNOBJECTS   = m_network.o
+ANNMODULES   = m_network.mod m_epoch.mod
+ANNOBJECTS   = m_network.o m_epoch.o
 
 # Data Modules
 DATAMODULES = m_data.mod
 DATAOBJECTS = m_data.o
 
-# Weight Initialization modules
-INITMODULES = m_initial.mod
-INITOBJECTS = m_initial.o
+# Stat modules
+#STATMODULES = m_normalize.mod
+#STATOBJECTS = m_normalize.o
 
 # Error Modules
-ERRORMODULES = m_mse.mod
-ERROROBJECTS = m_mse.o
-#ERRORMODULES = module_rmse.mod module_mse.mod
-#ERROROBJECTS = module_rmse.o   module_mse.o
+ERRORMODULES = m_moment.mod m_error.mod m_normalize.mod
+ERROROBJECTS = m_moment.o m_error.o m_normalize.o
 
 # Train modules
 TRAINMODULES = m_levenberg_marquardt.mod m_backprop.mod
-TRAINOBJECTS = m_levenberg_marquardt.o   m_backprop.o
-
-# Forecast modules
-FCSTMODULES = m_forecast.mod
-FCSTOBJECTS = m_forecast.o
-
-# Stat modules
-STATMODULES = m_moment.mod m_normalize.mod m_diagnostics.mod
-STATOBJECTS = m_moment.o   m_normalize.o   m_diagnostics.o
+TRAINOBJECTS = m_levenberg_marquardt.o m_backprop.o
 
 FMODULES = $(ANNMODULES) $(DATAMODULES) $(INITMODULES) $(ERRORMODULES) $(STATMODULES) $(FCSTMODULES) $(TRAINMODULES)
-FMODOBJS = $(ANNOBJECTS) $(DATAOBJECTS) $(INITOBJECTS) $(ERROROBJECTS) $(STATOBJECTS) $(FCSTOBJECTS) $(TRAINOBJECTS)
+FMODOBJS = $(ANNOBJECTS) $(DATAOBJECTS) $(INITOBJECTS) $(ERRORMODULES) $(STATMODULES) $(FCSTOBJECTS) $(TRAINOBJECTS)
 
 SMODULES = m_types.mod m_constants.mod m_file_util.mod
-SMODOBJS = m_types.o   m_constants.o   m_file_util.o
+SMODOBJS = m_types.o m_constants.o m_file_util.o
 
-FOBJECTS = main_ann.o
+FOBJECTS = ann_train.o
 COBJECTS = 
 
 # Fortan/C Mix Libraries

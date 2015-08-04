@@ -7,8 +7,9 @@
    USE m_types
    USE m_constants
    USE m_network
+   USE m_epoch
    USE m_data
-   USE m_mse
+   USE m_error
 
   ! -----------------------
   ! Disable implicit typing
@@ -43,7 +44,8 @@
     ! Arguments
     ! --------- 
      TYPE( Network ), INTENT( INOUT )           :: n  ! -- network
-     TYPE( Epoch ),   INTENT( INOUT )           :: tn ! -- training epoch (normalized)
+     !TYPE( Epoch ),   INTENT( INOUT )           :: tn ! -- training epoch (normalized)
+     TYPE( Epoch ),   POINTER                   :: tn ! -- training epoch (normalized)
 
     ! ---------------
     ! Local variables
