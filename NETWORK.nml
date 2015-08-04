@@ -1,5 +1,5 @@
 &NETWORK_NML
-NI = 100
-NH = 50
+NI = 2
+NH = 3
 NO = 1
 /

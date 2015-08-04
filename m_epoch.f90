@@ -39,7 +39,7 @@
      INTEGER( IP )                                :: np ! -- number of patterns
      INTEGER( IP )                                :: nf ! -- number of features
      INTEGER( IP )                                :: nt ! -- number of targets
-     TYPE( Pattern ), DIMENSION( : ), POINTER     :: p
+     TYPE( Pattern ), DIMENSION( : ), POINTER     :: p => NULL()
    END TYPE Epoch
 
  END MODULE m_epoch
