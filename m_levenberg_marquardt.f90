@@ -99,6 +99,7 @@
     ! -- Set initial learning parameter
      CALL RANDOM_SEED
      CALL RANDOM_NUMBER( mu )
+     !mu = 0.001
 
     ! -- Set best weights to current weights
      n%b = n%w
@@ -162,7 +163,9 @@
        n%ih => n%w(               1 :               n%bi * n%nh )
        n%ho => n%w( n%bi * n%nh + 1 : n%bi * n%nh + n%bh * n%no )
 
-       PRINT '(I4,3(1X,E24.17),1X,I6)', iteration, mu, local_error, network_error, misses
+       IF( mod(iteration, 100) .EQ. 0) THEN
+           PRINT '(I8,3(1X,E24.17),1X,I6)', iteration, mu, local_error, network_error, misses
+       END IF
 
       ! -- Adjust training parameter accordingly
        IF( local_error .LT. network_error ) THEN
@@ -180,7 +183,7 @@
 
       ! -- set a hard iteration limit, sure we can train forever, but do we want to?
        iteration = iteration + 1
-       IF( iteration > 50 ) EXIT
+       IF( iteration > 50000 ) EXIT
 
      END DO
 
